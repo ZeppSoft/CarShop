@@ -22,11 +22,11 @@ public class ServletOrder extends HttpServlet {
 
 
         if (DB.getCurrentUser().getLogin().equals("") && DB.getCurrentUser().getPassword().equals("")){
-            out.print("You must enter into system!");
+  //          out.print("You must enter into system!");
             return;
         }
-        out.println("Car purchased!");
-        out.println(request.getParameter("model"));
+      //  out.println("Car purchased!");
+      //  out.println(request.getParameter("model"));
         Car car = new Car();
         car.setModelName(request.getParameter("model"));
         car.setHullType(request.getParameter("hull"));
@@ -35,7 +35,27 @@ public class ServletOrder extends HttpServlet {
 
         DB.addOrder(car);
 
+        String button = "<html>\n" +
+                "  <head>\n" +
+                "    <title></title>\n" +
+                "  </head>\n" +
+                "  <body>\n" +
+                "  Please login:\n" +
+                "  <form action=\"\" >\n" +
+                "      <input type=\"submit\" value=\"Submit\"/>\n" +
+                "  </form>\n" +
+                "  <a href=\"register.jsp\">Registration</a>\n" +
+                "  </body>\n" +
+                "</html>";
 
+
+
+
+
+
+
+
+        out.print(button);
 
     }
 
@@ -113,7 +133,7 @@ public class ServletOrder extends HttpServlet {
        // super.destroy();
         DB.saveOrderXML(DB.getUserFile(DB.currentUser.getLogin()));
         File f = new File("Order.xml");
-        if (f!= null && f.exists())
+        if (f.exists())
             f.delete();
     }
 }
