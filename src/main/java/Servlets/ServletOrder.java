@@ -20,7 +20,7 @@ public class ServletOrder extends HttpServlet {
 
 
         if (DB.getCurrentUser().getLogin().equals("") && DB.getCurrentUser().getPassword().equals("")){
-  //          out.print("You must enter into system!");
+            out.print("You must enter into system!");
             return;
         }
       //  out.println("Car purchased!");
@@ -38,11 +38,10 @@ public class ServletOrder extends HttpServlet {
                 "    <title></title>\n" +
                 "  </head>\n" +
                 "  <body>\n" +
-                "  Please login:\n" +
+                "  Car purchased!\n" +
                 "  <form action=\"\" >\n" +
-                "      <input type=\"submit\" value=\"Submit\"/>\n" +
+                "      <input type=\"submit\" value=\"Back to purchases\"/>\n" +
                 "  </form>\n" +
-                "  <a href=\"register.jsp\">Registration</a>\n" +
                 "  </body>\n" +
                 "</html>";
 
