@@ -1,4 +1,4 @@
-package AUXL;
+package Utils;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
@@ -12,7 +12,6 @@ public class Car {
     private String hullType;
     private String color;
     private String isHatch;
-
 
 
     public String getModelName() {

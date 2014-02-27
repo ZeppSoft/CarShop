@@ -1,11 +1,5 @@
-<%@ page import="AUXL.DB" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: VShershnev
-  Date: 24.02.14
-  Time: 14:40
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="Utils.Util" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -50,10 +44,10 @@ Car order:
 </form>
 
 <b>User: </b>
-<% out.println(DB.getCurrentUser().getLogin()); %> <br/>
+<% out.println(Util.getCurrentUser().getLogin()); %> <br/>
 <a href="index.jsp">Log In</a> <br/>
 <a href="logout.jsp">Log Out</a> <br/>
 <b>Orders:</b>
-<% DB.loadOrderXML(DB.getUserFile(DB.currentUser.getLogin())); %>
+<% Util.loadOrderXML(Util.getUserFile(Util.currentUser.getLogin())); %>
 </body>
 </html>

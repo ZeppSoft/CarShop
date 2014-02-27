@@ -1,13 +1,6 @@
-package AUXL;
+package Utils;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
-
-/**
- * Created by VShershnev on 24.02.14.
- */
 
 
 public class Users implements Serializable {

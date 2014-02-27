@@ -1,4 +1,4 @@
-package AUXL;
+package Utils;
 
 
 import javax.xml.bind.annotation.XmlElement;
@@ -7,16 +7,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 import java.util.List;
+
 @XmlType
 @XmlRootElement
 public class Order {
-private     List<Car> carList;
+    private List<Car> carList;
 
     public Order() {
-        carList=new ArrayList<Car>();
+        carList = new ArrayList<Car>();
     }
+
     @XmlElementWrapper(name = "cars")
-    @XmlElement(name="car")
+    @XmlElement(name = "car")
     public List<Car> getCarList() {
         return carList;
     }

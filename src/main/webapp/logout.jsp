@@ -1,6 +1,6 @@
-<%@ page import="AUXL.Car" %>
-<%@ page import="AUXL.DB" %>
-<%@ page import="AUXL.Users" %>
+<%@ page import="Utils.Car" %>
+<%@ page import="Utils.Util" %>
+<%@ page import="Utils.Users" %>
 <%@ page import="java.util.ArrayList" %>
 <%--
   Created by IntelliJ IDEA.
@@ -16,8 +16,8 @@
 </head>
 <body>
  <%
-        DB.setCurrentUser(new Users("",""));
-     DB.orderedCars = new ArrayList<Car>();
+        Util.setCurrentUser(new Users("", ""));
+     Util.orderedCars = new ArrayList<Car>();
 %>
 Log out complete!
  <br/>

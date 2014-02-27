@@ -1,7 +1,7 @@
 package Servlets;
 
-import AUXL.Car;
-import AUXL.DB;
+import Utils.Car;
+import Utils.Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,21 +17,17 @@ public class ServletOrder extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        PrintWriter out = response.getWriter();
 
-
-
-        if (DB.getCurrentUser().getLogin().equals("") && DB.getCurrentUser().getPassword().equals("")){
+        if (Util.getCurrentUser().getLogin().equals("") && Util.getCurrentUser().getPassword().equals("")){
             out.print("You must enter into system!");
             return;
         }
-      //  out.println("Car purchased!");
-      //  out.println(request.getParameter("model"));
         Car car = new Car();
         car.setModelName(request.getParameter("model"));
         car.setHullType(request.getParameter("hull"));
         car.setColor(request.getParameter("color"));
         car.setIsHatch(request.getParameter("hutch"));
 
-        DB.addOrder(car);
+        Util.addOrder(car);
 
         String button = "<html>\n" +
                 "  <head>\n" +
@@ -45,26 +41,12 @@ public class ServletOrder extends HttpServlet {
                 "  </body>\n" +
                 "</html>";
 
-
-
-
-
-
-
-
         out.print(button);
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        //doPost(request,response);
-
-//        String html = "<html>\n" +
-//                "  <head>\n" +
-//                "    <title></title>\n" +
-//                "  </head>\n" +
-//                "  <body>";
 
         String html = "<html>\n" +
                 "<head>\n" +
@@ -108,11 +90,11 @@ public class ServletOrder extends HttpServlet {
                 "\n" +
                 "</form>";
 
-        html+="<b>User: "+(DB.getCurrentUser().getLogin())+"</b><br/>";
+        html+="<b>User: "+(Util.getCurrentUser().getLogin())+"</b><br/>";
         html+="<a href=\"index.jsp\">Log In</a> <br/>\n" +
                 "<a href=\"logout.jsp\">Log Out</a> <br/>\n" +
                 "<b>Orders:</b><br/>";
-        html+= DB.makeHTMLOrder();
+        html+= Util.makeHTMLOrder();
         html+="</body>\n" +
                 "</html>";
         out.print(html);
@@ -120,15 +102,12 @@ public class ServletOrder extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        //super.init();
-      //  DB.orderedCars = new ArrayList<Car>();
-        DB.loadOrderXML(DB.getUserFile(DB.currentUser.getLogin()));
+        Util.loadOrderXML(Util.getUserFile(Util.currentUser.getLogin()));
     }
 
     @Override
     public void destroy() {
-       // super.destroy();
-        DB.saveOrderXML(DB.getUserFile(DB.currentUser.getLogin()));
+        Util.saveOrderXML(Util.getUserFile(Util.currentUser.getLogin()));
         File f = new File("Order.xml");
         if (f.exists())
             f.delete();
